@@ -1,4 +1,5 @@
 local TweenService = game:GetService('TweenService')
+local HttpService = game:GetService('HttpService')
 
 local ServerStorage = game:GetService('ServerStorage')
 local BodyTrackerExternalModule = require(ServerStorage:WaitForChild('BodyTrackerExternal'))
@@ -22,6 +23,12 @@ local offsetValues = {
 
 local Attachments = {}
 local function UpdateAttachments( Data )
+	if Data.Success then
+		Data.Body = HttpService:JSONDecode(Data.Body)
+	else
+		return
+	end
+
 	for category, pointsTable in pairs(Data) do
 		if not Attachments[category] then
 			Attachments[category] = {}
@@ -42,3 +49,5 @@ local function UpdateAttachments( Data )
 end
 
 BodyTrackerExternalModule.DataUpdate:Connect(UpdateAttachments)
+
+BodyTrackerExternalModule:Init()

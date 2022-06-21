@@ -46,13 +46,14 @@ class NetworkHost:
 
 	# On Incoming Data, check validility.
 	def __onDataRecieve(self, address, data):
-		returnData = json.dumps({"Result": "Denied Access"})
+		#returnData = json.dumps({"Result": "Denied Access"})
 		print( address, data )
-		if hasPassword( data, self.password ):
-			data.pop("CODE")
-			self.handleReceivedData(data)
-			returnData = json.dumps(self.getReturnData(address, data))
-		return returnData
+		#if hasPassword( data, self.password ):
+		#	data.pop("CODE")
+		#	self.handleReceivedData(data)
+		#	returnData = json.dumps(self.getReturnData(address, data))
+		#return returnData
+		return json.dumps(self.getReturnData(address, data))
 
 	# Setup socket handling
 	def __setup_network_handle(self):

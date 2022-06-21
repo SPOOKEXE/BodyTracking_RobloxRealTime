@@ -2,8 +2,8 @@
 local HttpService = game:GetService('HttpService')
 
 local UPDATE_INTERVAL = 0.1 -- # per second
-local HOST_URL = ''
-local HOST_PASSWORD = ''
+local HOST_URL = 'http://127.0.0.1:80'
+local HOST_PASSWORD = 'epic'
 
 -- // Class // --
 local EventProxy = {}
@@ -49,6 +49,7 @@ end
 
 function Module:ParseData( dataFromHostServer )
 	print('Received Data ; ', dataFromHostServer)
+	return HttpService:JSONDecode(dataFromHostServer.Body)
 end
 
 function Module:RequestDataFromHostServer()
@@ -59,7 +60,7 @@ function Module:RequestDataFromHostServer()
 		Data = HttpService:RequestAsync({
 			Url = HOST_URL,
 			Method = "POST",
-			Body = HOST_PASSWORD,
+			Body = HttpService:JSONEncode( {HOST_PASSWORD, '5e100'} ),
 			Headers = {["Content-Type"] = "application/json"}
 		})
 
@@ -73,7 +74,7 @@ end
 
 function Module:Init()
 	local httpEnabled, _ = pcall(function()
-		return HttpService:GetAsync('www.google.com')
+		return HttpService:GetAsync('http://www.google.com')
 	end)
 
 	if not httpEnabled then
@@ -95,4 +96,3 @@ function Module:Init()
 end
 
 return Module
-
