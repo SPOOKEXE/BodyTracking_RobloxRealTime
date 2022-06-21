@@ -1,0 +1,11 @@
+{
+	"name": "bodytracker-external",
+	"tree": {
+		"$className": "DataModel",
+		"ServerStorage": {
+			"$className": "ServerStorage",
+			"$ignoreUnknownInstances": true,
+			"$path": "roblox"
+		}
+	}
+}

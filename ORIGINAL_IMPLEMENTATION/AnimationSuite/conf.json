@@ -1,0 +1,24 @@
+{
+    "LOCAL_IP": "127.0.0.1",
+    "PORT": 65433,
+    "ACCESS_CODE": 1234567890,
+    "SEND_DATA": {
+        "LeftHand": true,
+        "RightHand": true,
+        "Face": true,
+        "Pose": false
+    },
+    "DRAW_DATA": {
+        "LeftHand": true,
+        "RightHand": true,
+        "Face": true,
+        "Pose": false
+    },
+    "DETECTION_PARAMS": {
+        "min_detection_confidence": 0.5,
+        "min_tracking_confidence": 0.5
+    },
+    "SHOW_NODE_CAM": true,
+    "SHOW_RAW_CAM": true,
+    "CAPTURE_DEVICE": 0
+}

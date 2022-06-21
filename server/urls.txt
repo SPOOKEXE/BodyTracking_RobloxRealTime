@@ -1,0 +1,9 @@
+# ROBLOX
+https://developer.roblox.com/en-us/api-reference/function/HttpService/RequestAsync
+
+# OPENCV (cv2)
+https://docs.opencv.org/4.x/da/df6/tutorial_py_table_of_contents_setup.html
+https://docs.opencv.org/4.x/d7/d53/tutorial_py_pose.html
+
+# MEDIAPIPE
+https://google.github.io/mediapipe/
