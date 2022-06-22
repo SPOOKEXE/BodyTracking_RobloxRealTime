@@ -5,11 +5,10 @@ import json
 import bodytracker as tracking
 import network
 
-LatestParseData = [None, None, None]
+LatestParseData = [None, None, None] 
 
-def onDataRecieve(_):
-	return json.dumps([None, None, None])
-	#return json.dumps(LatestParseData)
+def onDataRecieve(_):	
+	return json.dumps(LatestParseData)
 
 # Host
 class RobloxHost(network.NetworkHost):
@@ -31,7 +30,8 @@ def ParseImage( parseImage ):
 		tracking.ParseHandResults(hands_results),
 		tracking.ParsePoseResults(pose_results)
 	]
-
+	#print(json.dumps(LatestParseData) + "\n")
+ 
 if __name__ == '__main__':
 	print('start body tracker for roblox platform.')
 	print('press escape to close video capture if opened')
