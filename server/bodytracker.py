@@ -78,7 +78,7 @@ def ParseFaceMeshResults( results ) -> list:
 # Get XYZ List
 def ParseHandResults( results ) -> list:
 	landmarks_xyz = []
-	if  results != None and results.multi_hand_landmarks != None:
+	if results != None and results.multi_hand_landmarks != None:
 		for hand_landmarks in results.multi_hand_landmarks:
 			ParseLandmarkXYZList(hand_landmarks.landmark, landmarks_xyz)
 	return landmarks_xyz
@@ -86,8 +86,7 @@ def ParseHandResults( results ) -> list:
 # Get XYZ List
 def ParsePoseResults( results ) -> list:
 	if results != None and results.pose_landmarks != None:
-		ParseLandmarkXYZList(results.pose_landmarks.landmark, [])
-		return results.pose_landmarks.landmark
+		return ParseLandmarkXYZList(results.pose_landmarks.landmark, [])
 	return None
 
 def ParseImage( parseImage ):
@@ -96,20 +95,20 @@ def ParseImage( parseImage ):
 	
 	# process
 	face_mesh_results = face_mesh.process(image)
-	#hands_results = hands.process(image)
-	#pose_results = pose.process(image)	
+	hands_results = hands.process(image)
+	pose_results = pose.process(image)	
 
 	# Draw the landmarks on the image.
 	image.flags.writeable = True
 	image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 	if face_mesh_results.multi_face_landmarks:
 		DrawFaceMeshLandmarks( image, face_mesh_results )
-	#if hands_results.multi_hand_landmarks:
-	#	DrawHandLandmarks(image, hands_results)
-	#DrawPoseLandmarks(image, pose_results)
+	if hands_results.multi_hand_landmarks:
+		DrawHandLandmarks(image, hands_results)
+	DrawPoseLandmarks(image, pose_results)
 
-	#return image, face_mesh_results, hands_results, pose_results
-	return image, face_mesh_results, None, None
+	return image, face_mesh_results, hands_results, pose_results
+	#return image, face_mesh_results, None, None
 
 def ShowImage( parseImage ):
 	cv2.imshow('Image Feed', cv2.flip(parseImage, 1))

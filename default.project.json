@@ -2,10 +2,15 @@
 	"name": "bodytracker-external",
 	"tree": {
 		"$className": "DataModel",
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"$ignoreUnknownInstances": true,
+			"$path": "roblox/ServerScriptService"
+		},
 		"ServerStorage": {
 			"$className": "ServerStorage",
 			"$ignoreUnknownInstances": true,
-			"$path": "roblox"
+			"$path": "roblox/ServerStorage"
 		}
 	}
 }

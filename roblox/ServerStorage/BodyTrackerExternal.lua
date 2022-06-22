@@ -1,7 +1,7 @@
 
 local HttpService = game:GetService('HttpService')
 
-local UPDATE_INTERVAL = 0.1 -- # per second
+local UPDATE_INTERVAL = 0.05 -- # per second
 local HOST_URL = 'http://127.0.0.1:80'
 local HOST_PASSWORD = 'epic'
 
@@ -48,7 +48,7 @@ function Module:GetLatestData()
 end
 
 function Module:ParseData( dataFromHostServer )
-	print('Received Data ; ', dataFromHostServer)
+	-- print('Received Data ; ', dataFromHostServer)
 	return HttpService:JSONDecode(dataFromHostServer.Body)
 end
 
